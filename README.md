@@ -1,5 +1,4 @@
-# Figma AI Review Agent
-
+# ProductForge
 A weekend AI workflow that reviews Figma designs, identifies UX issues, and turns them into GitHub-ready tasks.
 
 ## Goal
