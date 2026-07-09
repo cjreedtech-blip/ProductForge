@@ -76,7 +76,48 @@ Paste Claude/ProductForge output here.
 - 🔴 Do Not Build Yet
 `;
 
+// Write the assessment
 fs.writeFileSync(reviewPath, template);
 
-console.log(`Created review folder: ${reviewDir}`);
-console.log(`Created assessment file: ${reviewPath}`);
+// Engineering Tasks
+fs.writeFileSync(
+  path.join(reviewDir, "engineering-tasks.md"),
+`# Engineering Tasks
+
+## Tasks
+
+- [ ] Review ProductForge assessment
+- [ ] Create implementation plan
+- [ ] Estimate engineering effort
+- [ ] Identify technical dependencies
+`
+);
+
+// Acceptance Criteria
+fs.writeFileSync(
+  path.join(reviewDir, "acceptance-criteria.md"),
+`# Acceptance Criteria
+
+## Functional Requirements
+
+- [ ] Primary user flow is defined
+- [ ] Error states are handled
+- [ ] Accessibility requirements are met
+- [ ] Responsive behavior is validated
+`
+);
+
+// Metadata
+const metadata = {
+  reviewName,
+  timestamp: now.toISOString(),
+  generatedBy: "ProductForge",
+  version: "0.3"
+};
+
+fs.writeFileSync(
+  path.join(reviewDir, "metadata.json"),
+  JSON.stringify(metadata, null, 2)
+);
+
+console.log(`Created review package in: ${reviewDir}`);
